@@ -1,0 +1,124 @@
+﻿<Window
+    x:Class="MCT_Windows.Windows.SelectToolWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:localize="http://gu.se/Localization"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:MifareWindowsTool.Properties"
+    Title="{localize:Static resx:Resources.SelectToolWindowTitle}"
+    Width="480"
+    Height="420"
+    Background="#303030"
+    mc:Ignorable="d"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <StackPanel
+        Height="auto"
+        VerticalAlignment="Top"
+        Background="#303030"
+        Orientation="Vertical">
+        <Grid Background="#F0F0F0" Margin="5">
+            <localize:LanguageSelector x:Name="LangSelector" Loaded="LangSelector_Loaded"   />
+        </Grid>
+        <Button
+            x:Name="btnCompareDumps"
+            Height="26"
+            Margin="10"
+            Click="btnCompareDumps_Click"
+            Content="{localize:Static resx:Resources.btnCompareDumps}"
+            Style="{StaticResource buttonStyle}" />
+        <Button
+            x:Name="btnConvertDump"
+            Height="26"
+            Margin="10"
+            Click="btnConvertDump_Click"
+            Content="{localize:Static resx:Resources.btnConvertDump}"
+            Style="{StaticResource buttonStyle}" />
+        <Button
+            x:Name="btnChangeUID"
+            Height="26"
+            Margin="10"
+            Click="btnChangeUID_Click"
+            Content="{localize:Static resx:Resources.btnChangeUID}"
+            Style="{StaticResource buttonStyle}" />
+        <Separator />
+        <Button
+            x:Name="btnReinstallLibUsbK"
+            Height="26"
+            Margin="10"
+            Click="btnReinstallLibUsbK_Click"
+            Content="{localize:Static resx:Resources.btnReinstallLibUsbK}"
+            Style="{StaticResource buttonStyle}"
+            ToolTip="{localize:Static resx:Resources.UseInstallDriverIf}" />
+       
+        <Separator />
+        <Label Height="24" HorizontalAlignment="Center" Foreground="White" x:Name="lblDumpsPath" Content="{localize:Static resx:Resources.LabelDumpsPath}"></Label>
+        <StackPanel
+        Width="auto" Margin="2"
+        HorizontalAlignment="Stretch"
+        Background="#303030"
+        Orientation="Horizontal">
+            <TextBox Margin="2"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Stretch"   Background="#303030" x:Name="txtDumpsPath" 
+                     Foreground="White" MinWidth="272" Width="auto" MaxWidth="390" ></TextBox>
+            <Button  Margin="10,0,0,0" Width="auto" x:Name="btnChangeDefaultDumpPath" Click="btnChangeDefaultDumpPath_Click">
+                <StackPanel  Background="#303030" >
+                    <Image ToolTip="{localize:Static resx:Resources.Browse}"  Cursor="Hand"   
+                            Height="20" 
+                            VerticalAlignment="Top"
+                            Source="..\Images\Folder Explorer-01.png"
+                            Stretch="Uniform" />
+                </StackPanel>
+            </Button>
+            <Button Margin="10,0,0,0"  Width="auto" x:Name="btnResetDumpPath" Click="btnResetDumpPath_Click" >
+                <StackPanel  Background="#303030" >
+                    <Image ToolTip="{localize:Static resx:Resources.Reset}"  Cursor="Hand"   
+                            Height="20" 
+                            VerticalAlignment="Top"
+                            Source="..\Images\utilities_reset.png"
+                            Stretch="Uniform" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Separator />
+            <Label Height="24" HorizontalAlignment="Center" Foreground="White" x:Name="lblKeyPath" Content="{localize:Static resx:Resources.LabelKeysPath}"></Label>
+            <StackPanel
+        Width="auto" Margin="10"
+        HorizontalAlignment="Stretch"
+        Background="#303030"
+        Orientation="Horizontal">
+                <TextBox Margin="2"  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Stretch"   Background="#303030" x:Name="txtKeysPath" 
+                     Foreground="White" MinWidth="272" Width="auto" MaxWidth="390" ></TextBox>
+                <Button  Margin="10,0,0,0" Width="auto" x:Name="btnChangeDefaultKeyPath" Click="btnChangeDefaultKeyPath_Click">
+                    <StackPanel  Background="#303030" >
+                        <Image ToolTip="{localize:Static resx:Resources.Browse}"  Cursor="Hand"   
+                            Height="20" 
+                            VerticalAlignment="Top"
+                            Source="..\Images\Folder Explorer-01.png"
+                            Stretch="Uniform" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="10,0,0,0"  Width="auto" x:Name="btnResetKeyPath" Click="btnResetKeyPath_Click">
+                    <StackPanel  Background="#303030" >
+                        <Image ToolTip="{localize:Static resx:Resources.Reset}"  Cursor="Hand"   
+                            Height="20" 
+                            VerticalAlignment="Top"
+                            Source="..\Images\utilities_reset.png"
+                            Stretch="Uniform" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        <Button
+            x:Name="btnCancel"
+            Width="auto"
+            Height="26"
+            MinWidth="100"
+            Margin="10"
+            Click="btnCancel_Click"
+            Content="{localize:Static resx:Resources.Close}"
+            Style="{StaticResource buttonStyle}" />
+    </StackPanel>
+
+</Window>

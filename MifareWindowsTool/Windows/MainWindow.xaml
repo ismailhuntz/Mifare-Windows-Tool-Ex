@@ -1,0 +1,225 @@
+﻿<Window
+    x:Class="MCT_Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:localize="http://gu.se/Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:MifareWindowsTool.Properties"
+    xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
+    Width="800"
+    Height="365"
+    Background="#303030"
+    WindowStyle="SingleBorderWindow"
+    mc:Ignorable="d">
+
+    <Grid>
+        <StackPanel
+            Width="255"
+            HorizontalAlignment="Left"
+            Orientation="Vertical">
+            <StackPanel Width="auto" Orientation="Horizontal">
+                <Button
+                    x:Name="btnReadTag"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnReadTag_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="80"
+                            VerticalAlignment="Top"
+                            Source="..\Images\read_tag.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.ReadTag}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="btnWriteTag"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnWriteTag_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="auto"
+                            VerticalAlignment="Top"
+                            Source="..\Images\write_tag.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.WriteTag}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    x:Name="btnEditDumpFile"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnEditDumpFile_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="60"
+                            VerticalAlignment="Top"
+                            Source="..\Images\edit_analyse_dump_file.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.EditAnalyzeDumpFile}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="btnEditAddKeyFile"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnEditAddKeyFile_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="70"
+                            VerticalAlignment="Top"
+                            Source="..\Images\edit_add_keyfile.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.EditAddKeyFile}"
+                            TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    x:Name="btnTools"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnTools_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="auto"
+                            VerticalAlignment="Top"
+                            Source="..\Images\tools.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.Tools}" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    x:Name="btnInfos"
+                    Width="125"
+                    Height="100"
+                    Background="#5A595B"
+                    BorderBrush="White"
+                    BorderThickness="1"
+                    Click="btnInfos_Click"
+                    Cursor="Hand">
+                    <StackPanel>
+                        <Image
+                            Height="auto"
+                            VerticalAlignment="Top"
+                            Source="..\Images\help_and_info.png"
+                            Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            Text="{localize:Static resx:Resources.HelpAndInfo}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <CheckBox
+                x:Name="ckEnablePeriodicTagScan"
+                Width="auto"
+                Height="15"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Checked="ckEnablePeriodicTagScan_Checked"
+                Content="{localize:Static resx:Resources.ckEnablePeriodicTagScanContent}"
+                FontSize="10"
+                Foreground="White"
+                IsChecked="False"
+                ToolTip="{localize:Static resx:Resources.ckEnablePeriodicTagScanTooltip}"
+                Unchecked="ckEnablePeriodicTagScan_Checked" />
+            <CheckBox
+                x:Name="ckEasyMode"
+                Width="auto"
+                Height="15"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Content="Easy mode"
+                FontSize="10"
+                Foreground="White"
+                IsChecked="{Binding Path=EasyMode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                ToolTip="Less questions asked before reading/writing processes" />
+        </StackPanel>
+        <avalon:TextEditor
+            x:Name="editor"
+            Width="auto"
+            Height="auto"
+            IsReadOnly="True"
+            MinHeight="300"
+            Margin="255,0,0,20"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+           TextChanged="editor_TextChanged"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Black" Foreground="Lime"
+            />
+        <Button
+            x:Name="btnPauseCurrentTask"
+            Width="auto"
+            Height="20"
+            Margin="5,0,20,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Background="#5A595B"
+            Click="btnPauseCurrentTask_Click"
+            Content="Pause Current Task"
+            Cursor="Hand"
+            FontSize="11"
+            FontWeight="Bold"
+            Foreground="Green"
+            Visibility="Hidden" />
+        <Button
+            x:Name="btnAbortCurrentTask"
+            Width="auto"
+            Height="20"
+            Margin="5,0,20,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Background="#5A595B"
+            Click="btnAbortCurrentTask_Click"
+            Content="Abort Current Task"
+            Cursor="Hand"
+            FontSize="11"
+            FontWeight="Bold"
+            Foreground="Yellow"
+            Visibility="Collapsed" />
+    </Grid>
+</Window>
