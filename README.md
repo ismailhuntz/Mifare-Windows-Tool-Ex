@@ -1,4 +1,12 @@
-﻿# Mifare Windows Tool Reborn - MWTR
+# A Copy from MWTR 
+
+As this are the latest repo on this project, a copy has been made and customize to my own need.
+
+Original readme below.
+
+## 
+
+ # Mifare Windows Tool Reborn - MWTR
 
 ## Important
 
